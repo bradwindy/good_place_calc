@@ -1,4 +1,4 @@
-# good_place_calc
+# The Good Place Calculator
 
 A calculator for your points on the TV show &#x27;The Good Place&#x27;.
 
