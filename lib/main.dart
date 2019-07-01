@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "Do you own a BMW?",
   ];
 
-  final List<int> indexes = [null, null, null, null, null, null, null, null,
+  List<int> indexes = [null, null, null, null, null, null, null, null,
     null, null, null, null, null, null, null, null, null, null, null, null];
 
   List<GroupModel> _group = [
@@ -113,10 +113,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     padding: EdgeInsets.only(top: 10),
                                     child: Text(questions[int],
                                       style: new TextStyle(
-                                          fontSize: 18.0,
-                                          fontFamily: 'Brandon',
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.grey[800]
+                                          fontSize: 14.0,
+                                          fontFamily: 'Palanquin',
+                                          color: Colors.grey[800],
+                                          fontWeight: FontWeight.w700
                                       ),
                                     ),
                                   ),
@@ -136,9 +136,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: <Widget>[
                                   Text("${item.text}",
                                     style: new TextStyle(
-                                        fontFamily: 'Brandon',
+                                        fontFamily: 'Palanquin',
                                         fontWeight: FontWeight.w100,
-                                        color: Colors.grey[700]
+                                        color: Colors.grey[700],
+                                        fontSize: 12
                                     ),
                                   ),
                                   Radio(
@@ -168,9 +169,36 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _select(choice) {
-    setState(() {
+    if (choice.toString() == "clear") {
+      setState(() {
+        indexes = [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ];
+      });
+    } else if (choice.toString() == "about") {
+      _showAboutDialog();
+    } else if (choice.toString() == "donate") {
       debugPrint(choice);
-    });
+    }
   }
 
   @override
@@ -181,9 +209,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Padding(
           padding: EdgeInsets.only(left: 5, top: 2),
           child: Text(
-            "The Good Place Calculator",
+            "The Moral Calculator",
             style: new TextStyle(
-                fontFamily: 'Brandon',
+                fontFamily: 'Palanquin',
+                fontWeight: FontWeight.w700,
                 fontSize: 22
             ),
           ),
@@ -204,8 +233,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         'Clear All',
                         style: new TextStyle(
-                            fontFamily: 'Brandon',
-                            fontWeight: FontWeight.w100
+                          fontFamily: 'Palanquin',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
@@ -222,8 +252,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         'About',
                         style: new TextStyle(
-                            fontFamily: 'Brandon',
-                            fontWeight: FontWeight.w100
+                          fontFamily: 'Palanquin',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
@@ -241,8 +272,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         'Donate',
                         style: new TextStyle(
-                            fontFamily: 'Brandon',
-                            color: Colors.red
+                            fontFamily: 'Palanquin',
+                            color: Colors.red,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700
                         ),
                       ),
                     ),
@@ -271,7 +304,14 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => _showDialog(),
         tooltip: 'Get Score',
         icon: Icon(Icons.show_chart),
-        label: const Text('Get Score'),
+        label: const Text(
+          'Get Score',
+          style: TextStyle(
+              fontFamily: 'Palanquin',
+              fontSize: 14,
+              fontWeight: FontWeight.w700
+          ),
+        ),
 
       ),
     );
@@ -421,16 +461,16 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(
                 "+" + points.toStringAsFixed(2),
                 style: new TextStyle(
-                    fontFamily: 'Brandon',
+                    fontFamily: 'Palanquin',
                     fontSize: 36,
-                    color: Colors.green
+                    color: Colors.green,
+                    fontWeight: FontWeight.w700
                 ),
               ),
               content: new Text(
-                "You're headed to the good place 😊",
+                "You're morrally correct 😊",
                 style: new TextStyle(
-                    fontFamily: 'Brandon',
-                    fontWeight: FontWeight.w100
+                  fontFamily: 'Palanquin',
                 ),
               ),
               actions: <Widget>[
@@ -438,7 +478,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: new Text(
                     "CLOSE",
                     style: new TextStyle(
-                        fontFamily: 'Brandon'
+                        fontFamily: 'Palanquin',
+                        fontWeight: FontWeight.w700
                     ),
                   ),
                   onPressed: () {
@@ -452,16 +493,16 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(
                 points.toStringAsFixed(2),
                 style: new TextStyle(
-                    fontFamily: 'Brandon',
+                    fontFamily: 'Palanquin',
                     fontSize: 36,
-                    color: Colors.red
+                    color: Colors.red,
+                    fontWeight: FontWeight.w700
                 ),
               ),
               content: new Text(
-                "Bad place for you! 😈",
+                "You're morally corrupt 😈",
                 style: new TextStyle(
-                    fontFamily: 'Brandon',
-                    fontWeight: FontWeight.w100
+                  fontFamily: 'Palanquin',
                 ),
               ),
               actions: <Widget>[
@@ -469,7 +510,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: new Text(
                     "CLOSE",
                     style: new TextStyle(
-                        fontFamily: 'Brandon'
+                        fontFamily: 'Palanquin',
+                        fontWeight: FontWeight.w700
                     ),
                   ),
                   onPressed: () {
@@ -480,25 +522,25 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
         } else {
-          debugPrint(indexes.toString());
           return AlertDialog(
             title: Text(
               "Oops!",
               style: new TextStyle(
-                fontFamily: 'Brandon',
+                  fontFamily: 'Palanquin',
+                  fontWeight: FontWeight.w700
               ),
             ),
             content: new Text("One or more questions were not answered",
               style: new TextStyle(
-                  fontFamily: 'Brandon',
-                  fontWeight: FontWeight.w100
+                fontFamily: 'Palanquin',
               ),
             ),
             actions: <Widget>[
               new FlatButton(
                 child: new Text("GO BACK",
                   style: new TextStyle(
-                    fontFamily: 'Brandon',
+                      fontFamily: 'Palanquin',
+                      fontWeight: FontWeight.w700
                   ),
                 ),
                 onPressed: () {
@@ -508,6 +550,43 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           );
         }
+      },
+    );
+  }
+
+  void _showAboutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "About",
+            style: new TextStyle(
+                fontFamily: 'Palanquin',
+                fontWeight: FontWeight.w700
+            ),
+          ),
+          content: new Text(
+            "App is Copyright © Bradley Windybank, 2019 - All Rights Reserved.\n\n"
+                "App takes inspiration from 'The Good Place' TV show but all trademark use, inspiration and similarities come under fair use.",
+            style: new TextStyle(
+              fontFamily: 'Palanquin',
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("GO BACK",
+                style: new TextStyle(
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
       },
     );
   }

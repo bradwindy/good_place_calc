@@ -43,8 +43,10 @@ flutter:
   uses-material-design: true
 
   fonts:
-   - family: Brandon
+    - family: Palanquin
      fonts:
-       - asset: fonts/branReg.otf
-       - asset: fonts/branBld.otf
+       - asset: fonts/Palanquin-Regular.ttf
+       - asset: fonts/Palanquin-Bold.ttf
          weight: 700
+       - asset: fonts/Palanquin-Light.ttf
+         weight: 100
