@@ -568,7 +568,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           content: new Text(
-            "App is Copyright © Bradley Windybank, 2019 - All Rights Reserved.\n\n"
+            "Developed by Bradley Windybank in NZ 🇳🇿, I'm a student developer, so bugs may be present and may take a while to fix, sorry!\n\n"
+                "App is Copyright © Bradley Windybank, 2019 - All Rights Reserved.\n\n"
                 "App takes inspiration from 'The Good Place' TV show but all trademark use, inspiration and similarities come under fair use.",
             style: new TextStyle(
               fontFamily: 'Palanquin',
