@@ -44,7 +44,7 @@ flutter:
 
   fonts:
     - family: Palanquin
-     fonts:
+      fonts:
        - asset: fonts/Palanquin-Regular.ttf
        - asset: fonts/Palanquin-Bold.ttf
          weight: 700
