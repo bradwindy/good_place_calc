@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         accentColorBrightness: Brightness.dark,
         primaryColor: Colors.white,
         canvasColor: Colors.white,
+        fontFamily: 'Palanquin',
       ),
       home: MyHomePage(),
     );
