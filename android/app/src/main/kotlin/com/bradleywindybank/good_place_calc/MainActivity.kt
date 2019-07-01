@@ -1,4 +1,4 @@
-package com.bradleywindybank.good_place_calc
+package com.bradleywindybank.moral_calc
 
 import android.os.Bundle
 

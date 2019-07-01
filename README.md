@@ -1,16 +1,27 @@
-# The Good Place Calculator
+# The Moral Calculator
 
-A calculator for your points on the TV show &#x27;The Good Place&#x27;.
+Inspired by the TV show &#x27;The Good Place&#x27;.
 
-## Getting Started
+## Built With
 
-This project is a starting point for a Flutter application.
+* [Flutter](https://github.com/flutter/flutter) - The app SDK used
+* [flutter_launcher_icons](https://pub.dartlang.org/packages/flutter_launcher_icons) - Used for app icon
+* [outline_material_icons](https://pub.dartlang.org/packages/outline_material_icons) - Used for new outline material icons
+* [flutter_statusbarcolor](https://pub.dartlang.org/packages/flutter_statusbarcolor) - Used for white status bar
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Versioning
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+I use [SemVer](http://semver.org/) for versioning.
+
+## Authors
+
+* **Bradley Windybank** - *All work* 
+
+## License
+
+Copyright (C) Bradley Windybank - All Rights Reserved. Unauthorized copying of this file, via any medium is strictly prohibited. This code is proprietary and confidential. Written by Bradley Windybank <trykryda@gmail.com>, 2019.
+
+## Acknowledgments
+
+* Authors of Flutter for providing such an awesome platform
