@@ -10,6 +10,12 @@
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/launcher_icon"
         android:label="Moral Calculator">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9783239556129868~5221524670" />
+
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

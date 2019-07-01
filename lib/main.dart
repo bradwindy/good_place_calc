@@ -1,9 +1,14 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Admob.initialize("ca-app-pub-9783239556129868~5221524670");
+  runApp(MyApp());
+}
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -83,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildList(context) {
     return Flexible(
       child: ListView.builder(
-        padding: EdgeInsets.only(top: 0, bottom: 80),
+        padding: EdgeInsets.only(bottom: 20),
         itemCount: questions.length,
         itemBuilder: (context, int) {
           return Card(
@@ -293,7 +298,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildList(context),
-
+            Padding(
+                padding: EdgeInsets.only(bottom: 80, top: 20),
+                child: AdmobBanner(
+                  adUnitId: "ca-app-pub-9783239556129868/1006947496",
+                  adSize: AdmobBannerSize.BANNER,
+                )
+            )
           ],
         ),
       ),

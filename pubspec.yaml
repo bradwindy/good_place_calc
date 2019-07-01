@@ -11,7 +11,7 @@ description: A calculator inspired by the TV show &#x27;The Good Place&#x27;.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.1.0+1
+version: 0.1.0+2
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -26,6 +26,8 @@ dependencies:
   outline_material_icons: ^0.1.0
   flutter_statusbarcolor: any
   flutter_launcher_icons: "^0.7.2"
+  admob_flutter: "^0.3.1"
+
 
 dev_dependencies:
   flutter_test:
