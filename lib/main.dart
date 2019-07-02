@@ -488,10 +488,25 @@ class _MyHomePageState extends State<MyHomePage> {
               actions: <Widget>[
                 new FlatButton(
                   child: new Text(
+                    "SUPPORT",
+                    style: new TextStyle(
+                        fontFamily: 'Palanquin',
+                        fontWeight: FontWeight.w700,
+                        color: Colors.redAccent
+                    ),
+                  ),
+                  onPressed: () {
+                    _showDonateDialog();
+                  },
+                ),
+
+                new FlatButton(
+                  child: new Text(
                     "CLOSE",
                     style: new TextStyle(
                         fontFamily: 'Palanquin',
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey[700]
                     ),
                   ),
                   onPressed: () {
@@ -520,10 +535,25 @@ class _MyHomePageState extends State<MyHomePage> {
               actions: <Widget>[
                 new FlatButton(
                   child: new Text(
+                    "SUPPORT",
+                    style: new TextStyle(
+                        fontFamily: 'Palanquin',
+                        fontWeight: FontWeight.w700,
+                        color: Colors.red
+                    ),
+                  ),
+                  onPressed: () {
+                    _showDonateDialog();
+                  },
+                ),
+
+                new FlatButton(
+                  child: new Text(
                     "CLOSE",
                     style: new TextStyle(
                         fontFamily: 'Palanquin',
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey[700]
                     ),
                   ),
                   onPressed: () {
@@ -592,6 +622,80 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: new TextStyle(
                     fontFamily: 'Palanquin',
                     fontWeight: FontWeight.w700
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showDonateDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Donate",
+            style: new TextStyle(
+                fontFamily: 'Palanquin',
+                fontWeight: FontWeight.w700
+            ),
+          ),
+          content: new Text(
+            "I'm a University Student from New Zealand. If you enjoyed the app, feel free to donate, every little bit helps.\n\n"
+                "Thank you ❤️",
+            style: new TextStyle(
+              fontFamily: 'Palanquin',
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("\$5",
+                style: new TextStyle(
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+
+            new FlatButton(
+              child: new Text("\$3",
+                style: new TextStyle(
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+
+            new FlatButton(
+              child: new Text("\$1",
+                style: new TextStyle(
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+
+            new FlatButton(
+              child: new Text("NOT NOW",
+                style: new TextStyle(
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey[700]
                 ),
               ),
               onPressed: () {
