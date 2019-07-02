@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 void main() {
@@ -47,6 +50,65 @@ class GroupModel {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  /// The In App Purchase plugin
+  InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
+
+  /// Products for sale
+  List<ProductDetails> _products = [];
+
+  /// Past purchases
+  List<PurchaseDetails> _purchases = [];
+
+  /// Updates to purchases
+  StreamSubscription _subscription;
+
+  @override
+  void initState() {
+    _initialize();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+
+  /// Initialize data
+  void _initialize() async {
+    bool _available = await _iap.isAvailable();
+
+    if (_available) {
+      await _getProducts();
+    }
+
+    _subscription = _iap.purchaseUpdatedStream.listen((data) =>
+        setState(() {
+          _showThanksDialog();
+          _purchases.addAll(data);
+        }));
+  }
+
+
+  Future<void> _getProducts() async {
+    Set<String> ids = <String>[
+      'onedollar.donation',
+      'fivedollar.donation',
+    ].toSet();
+
+    ProductDetailsResponse response = await _iap.queryProductDetails(ids);
+
+    setState(() {
+      _products = response.productDetails;
+    });
+  }
+
+  void _buyProduct(ProductDetails prod) {
+    final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
+    _iap.buyConsumable(purchaseParam: purchaseParam);
+  }
+
   final List<String> questions =
   [
     "Have you ever donated to charity?",
@@ -203,7 +265,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (choice.toString() == "about") {
       _showAboutDialog();
     } else if (choice.toString() == "donate") {
-      debugPrint(choice);
+      _showDonateDialog();
     }
   }
 
@@ -581,8 +643,9 @@ class _MyHomePageState extends State<MyHomePage> {
               new FlatButton(
                 child: new Text("GO BACK",
                   style: new TextStyle(
-                      fontFamily: 'Palanquin',
-                      fontWeight: FontWeight.w700
+                    fontFamily: 'Palanquin',
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey[700],
                   ),
                 ),
                 onPressed: () {
@@ -620,8 +683,9 @@ class _MyHomePageState extends State<MyHomePage> {
             new FlatButton(
               child: new Text("GO BACK",
                 style: new TextStyle(
-                    fontFamily: 'Palanquin',
-                    fontWeight: FontWeight.w700
+                  fontFamily: 'Palanquin',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey[700],
                 ),
               ),
               onPressed: () {
@@ -634,7 +698,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _showDonateDialog() {
+  void _showDonateDialog() async {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -654,41 +718,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text("\$5",
-                style: new TextStyle(
-                    fontFamily: 'Palanquin',
-                    fontWeight: FontWeight.w700
+            for (var prod in _products)
+              ...[
+                new FlatButton(
+                  child: new Text(prod.price,
+                    style: new TextStyle(
+                        fontFamily: 'Palanquin',
+                        fontWeight: FontWeight.w700
+                    ),
+                  ),
+                  onPressed: () {
+                    _buyProduct(prod);
+                  },
                 ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-
-            new FlatButton(
-              child: new Text("\$3",
-                style: new TextStyle(
-                    fontFamily: 'Palanquin',
-                    fontWeight: FontWeight.w700
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-
-            new FlatButton(
-              child: new Text("\$1",
-                style: new TextStyle(
-                    fontFamily: 'Palanquin',
-                    fontWeight: FontWeight.w700
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+              ],
 
             new FlatButton(
               child: new Text("NOT NOW",
@@ -696,6 +739,43 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: 'Palanquin',
                     fontWeight: FontWeight.w700,
                     color: Colors.grey[700]
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showThanksDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Thank you",
+            style: new TextStyle(
+                fontFamily: 'Palanquin',
+                fontWeight: FontWeight.w700
+            ),
+          ),
+          content: new Text(
+            "Thanks so much for your support ❤️",
+            style: new TextStyle(
+              fontFamily: 'Palanquin',
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("GO BACK",
+                style: new TextStyle(
+                  fontFamily: 'Palanquin',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey[700],
                 ),
               ),
               onPressed: () {
