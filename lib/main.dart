@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return MaterialApp(
-      title: 'The Good Place Calculator',
+      title: 'The Moral Calculator',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         brightness: Brightness.light,
