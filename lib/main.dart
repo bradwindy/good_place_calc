@@ -411,13 +411,13 @@ class _MyHomePageState extends State<MyHomePage> {
               if (indexes[i] == 1) {
                 points += 1000;
               } else {
-                points -= 2000;
+                points -= 3000;
               }
             } else if (i == 1) {
               if (indexes[i] == 1) {
                 points += 5555.55;
               } else {
-                points -= 2324.23;
+                points -= 5324.23;
               }
             } else if (i == 2) {
               if (indexes[i] == 1) {
@@ -453,13 +453,13 @@ class _MyHomePageState extends State<MyHomePage> {
               if (indexes[i] == 1) {
                 points -= 52834.93;
               } else {
-                points += 4030.82;
+                points += 430.82;
               }
             } else if (i == 8) {
               if (indexes[i] == 1) {
                 points -= 2183.69;
               } else {
-                points += 2933.01;
+                points += 933.01;
               }
             } else if (i == 9) {
               if (indexes[i] == 1) {
@@ -469,9 +469,9 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             } else if (i == 10) {
               if (indexes[i] == 1) {
-                points -= 2183.69;
+                points -= 7583.69;
               } else {
-                points += 2933.01;
+                points += 1003.01;
               }
             } else if (i == 11) {
               if (indexes[i] == 1) {
@@ -493,7 +493,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             } else if (i == 14) {
               if (indexes[i] == 1) {
-                points -= 7555.27;
+                points -= 9555.27;
               } else {
                 points += 1024.37;
               }
@@ -513,19 +513,19 @@ class _MyHomePageState extends State<MyHomePage> {
               if (indexes[i] == 1) {
                 points -= 2572.02;
               } else {
-                points += 2873.32;
+                points += 873.32;
               }
             } else if (i == 18) {
               if (indexes[i] == 1) {
                 points -= 22572.02;
               } else {
-                points += 4273.89;
+                points += 273.89;
               }
             } else if (i == 19) {
               if (indexes[i] == 1) {
                 points -= 220572.02;
               } else {
-                points += 40273.89;
+                points += 10273.89;
               }
             }
           }
