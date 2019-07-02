@@ -85,8 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _subscription = _iap.purchaseUpdatedStream.listen((data) =>
         setState(() {
-          _showThanksDialog();
           _purchases.addAll(data);
+          debugPrint("PURCHASE DATA" + data.last.status.toString());
+
+          if (data.last.status == PurchaseStatus.purchased) {
+            _showThanksDialog();
+          } else if (data.last.status == PurchaseStatus.error) {
+            _showErrorDialog();
+          }
         }));
   }
 
@@ -734,7 +740,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
 
             new FlatButton(
-              child: new Text("NOT NOW",
+              child: new Text("GO BACK",
                 style: new TextStyle(
                     fontFamily: 'Palanquin',
                     fontWeight: FontWeight.w700,
@@ -772,6 +778,43 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: <Widget>[
             new FlatButton(
               child: new Text("GO BACK",
+                style: new TextStyle(
+                  fontFamily: 'Palanquin',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey[700],
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Error",
+            style: new TextStyle(
+                fontFamily: 'Palanquin',
+                fontWeight: FontWeight.w700
+            ),
+          ),
+          content: new Text(
+            "An error occurred or the payment was aborted",
+            style: new TextStyle(
+              fontFamily: 'Palanquin',
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("OKAY",
                 style: new TextStyle(
                   fontFamily: 'Palanquin',
                   fontWeight: FontWeight.w700,
